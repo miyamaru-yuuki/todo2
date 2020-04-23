@@ -1,0 +1,195 @@
+h1 {
+
+    background: #e02a65;
+    color: #FFFFFF;
+}
+
+#contents {
+    overflow: hidden;
+}
+
+
+
+table{
+
+    width:100%;
+    border-collapse:collapse;
+
+}
+
+th{
+
+    border:1px solid black;
+    padding: 0.5em;
+
+}
+
+td{
+
+    border:1px solid black;
+    padding: 0.5em;
+    width:20%;
+
+}
+
+.title {
+
+    text-decoration: none;
+    color: #0000F0;
+}
+
+.sakujyo{
+
+    text-decoration: none;
+    color: #FF0000;
+}
+
+.naiyou {
+
+
+    font-weight: bold;
+    font-size: 20px;
+}
+ul{
+
+    list-style-type:none;
+    padding:0;
+
+}
+
+ul li a {
+
+    border: 1px solid gray;
+    display: block;
+    padding: 0.5em;
+    text-decoration: none;
+    color: #FFFFFF;
+    background-color: #E08000;
+    text-align: center;
+    border-radius: 5px;
+
+}
+
+ul li {
+
+    margin-bottom:0.5em;
+
+}
+
+#shori {
+
+
+    font-weight: bold;
+    color: #FF0000;
+}
+
+.head1 {
+
+
+    background: #dfe22a;
+}
+
+.hennshuu {
+
+    color: #000000;
+
+
+}
+
+a{
+    text-decoration: none;
+}
+
+.tuika{
+
+    margin-bottom:20px;
+}
+
+.shukushou{
+
+    max-width: 300px;
+
+}
+
+.container {
+
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.mae a{
+
+
+    display: inline-block;
+    padding: 0.5em 1em;
+    text-decoration: none;
+    background: #668ad8;/*ボタン色*/
+    color: #FFF;
+    border-radius: 3px;
+
+}
+
+.tugi a{
+
+    display: inline-block;
+    padding: 0.5em 1em;
+    text-decoration: none;
+    background: #668ad8;/*ボタン色*/
+    color: #FFF;
+    border-radius: 3px;
+
+}
+
+.mae{
+
+    width:4em;
+}
+
+.tugi{
+
+    width:4em;
+}
+
+.page{
+
+    text-align: center;
+}
+
+.toukou{
+    border-bottom: solid 2px #0000ff;
+}
+
+@media screen and (max-width: 767px) {
+
+    * {
+        -webkit-appearance: none;
+    }
+
+    main { width:100%; }
+
+    table{
+
+        width:100%;
+
+    }
+
+    td{
+
+        width:20%;
+    }
+
+    .login{
+
+        width:50%;
+        font-size: medium;
+
+    }
+
+    .select{
+
+        width:50%;
+        font-size: medium;
+    }
+
+}
