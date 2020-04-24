@@ -31,10 +31,10 @@ class TodoTable
         $return = require_once('env.php');
 
         foreach($all as $data){
-            if($data['status'] == 0){
-                $data['status'] = $return[0];
-            }elseif($data['status'] == 1){
-                $data['status'] = $return[1];
+            if($data['status'] == $return['key']['unfinished']){
+                $data['status'] = $return['status'][0];
+            }elseif($data['status'] == $return['key']['finished']){
+                $data['status'] = $return['status'][1];
             }
             $todo = new Todo($data['tid'],$data['tname'],$data['status'],$data['priority'],$data['registrationTime']);
             $ret[] = $todo;
