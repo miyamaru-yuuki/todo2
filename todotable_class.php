@@ -29,13 +29,25 @@ class TodoTable
         $ret = array();
 
         $return = require_once('env.php');
+//        var_dump($return);
 
         foreach($all as $data){
+            //ステータス　データ加工
             if($data['status'] == $return['key']['unfinished']){
                 $data['status'] = $return['status'][0];
             }elseif($data['status'] == $return['key']['finished']){
                 $data['status'] = $return['status'][1];
             }
+
+            //優先順位　データ加工
+            if($data['priority'] == $return['key2']['high']){
+                $data['priority'] = $return['priority'][0];
+            }elseif($data['priority'] == $return['key2']['medium']){
+                $data['priority'] = $return['priority'][1];
+            }elseif($data['priority'] == $return['key2']['row']){
+                $data['priority'] = $return['priority'][2];
+            }
+
             $todo = new Todo($data['tid'],$data['tname'],$data['status'],$data['priority'],$data['registrationTime']);
             $ret[] = $todo;
         }

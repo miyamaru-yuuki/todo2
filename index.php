@@ -1,13 +1,21 @@
 <?php
-    require_once ('todotable_class.php');
 
-    $dsn = "mysql:dbname=mmr";
-    $username = "mmr";
-    $pass = "pass";
-    $db = new PDO($dsn,$username,$pass);
+require_once ('todotable_class.php');
+$return = require ('env.php');
+$dsn = "mysql:dbname=mmr";
+$username = "mmr";
+$pass = "pass";
+$db = new PDO($dsn,$username,$pass);
+$todo = new TodoTable($db);
     
-    $todo = new TodoTable($db);
-    $todos = $todo->get_todoAll();
+//追加処理
+if(isset($_POST['tname'],$_POST['priority'])){
+    $tname = $_POST['tname'];
+    $priority = $_POST['priority'];
+    $todo->add($tname,$priority);
+}
+
+$todos = $todo->get_todoAll();
 ?>
 <!DOCTYPE html>
 <html>
@@ -36,6 +44,22 @@
                 }
                 ?>
             </table>
+            <p>Todoを追加する</p>
+            <form method="POST" action="add.php">
+                <p>Todoの内容 <input type="text" name="tname"></p>
+                <p>優先順位 
+                    <select name="priority">
+                        <?php
+                        foreach($return['priority'] as $key => $value){
+                        ?>
+                        <option value=<?php echo $key; ?> selected><?php echo $value; ?></option>
+                            <?php
+                        }
+                        ?>
+                    </select>
+                </p>
+                <p><input type="submit" value="追加"></p>
+            </form>
         </main>
     </div>
     <footer>
