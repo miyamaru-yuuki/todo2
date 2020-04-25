@@ -13,22 +13,8 @@ $db = new PDO($dsn,$username,$pass);
 $todo = new TodoTable($db);
 
 $todoSingle = $todo->get_todo($tid);
-
-//進捗　データ加工
-if($todoSingle->getStatus() == $return['key']['unfinished']){
-    $statusDisplay = $return['status'][0];
-}elseif($todoSingle->getStatus() == $return['key']['finished']){
-    $statusDisplay = $return['status'][1];
-}
-
-//優先順位　データ加工
-if($todoSingle->getPriority() == $return['key2']['high']){
-    $priorityDisplay = $return['priority'][0];
-}elseif($todoSingle->getPriority() == $return['key2']['medium']){
-    $priorityDisplay = $return['priority'][1];
-}elseif($todoSingle->getPriority() == $return['key2']['row']){
-    $priorityDisplay = $return['priority'][2];
-}
+$priority = (int)$todoSingle->getPriority();
+$status = (int)$todoSingle->getStatus();
 ?>
 <!DOCTYPE html>
 <html>
@@ -49,8 +35,33 @@ if($todoSingle->getPriority() == $return['key2']['high']){
         <main>
             <form method="POST" action="updateKakunin.php">
                 <p>Todoの内容 <input type="text" name="tname" value="<?php echo $todoSingle->getTname(); ?>"></p>
-                <p>進捗 <input type="text" name="tname" value="<?php echo $statusDisplay; ?>"></p>
-                <p>優先順位 <input type="text" name="tname" value="<?php echo $priorityDisplay; ?>"></p>
+                <div>進捗
+                    <select name="status">
+                        <?php
+                        foreach($return['status'] as $key => $value){
+                            if($key == $status){
+                                echo '<option value="' .$key. '" selected>' .$value. '</option>';
+                            }else{
+                                echo '<option value="' .$key. '">' .$value. '</option>';
+                            }
+                        }
+                        ?>
+                    </select>
+                </div>
+                <div>優先順位
+                    <select name="priority">
+                        <?php
+                        foreach($return['priority'] as $key => $value){
+                            if($key == $priority){
+                                echo '<option value="' .$key. '" selected>' .$value. '</option>';
+                            }else{
+                                echo '<option value="' .$key. '">' .$value. '</option>';
+                            }
+                        }
+                        ?>
+                    </select>
+                </div>
+                <input type="hidden" name="tid" value="<?php echo $tid; ?>">
                 <p><input type="submit" value="編集"></p>
             </form>
         </main>

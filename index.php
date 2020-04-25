@@ -6,20 +6,27 @@ $dsn = "mysql:dbname=mmr";
 $username = "mmr";
 $pass = "pass";
 $db = new PDO($dsn,$username,$pass);
-$todo = new TodoTable($db);
+$todoTable = new TodoTable($db);
     
 //追加処理
-if(isset($_POST['tname'],$_POST['priority'])){
+if(isset($_POST['tid'],$_POST['tname'],$_POST['status'],$_POST['priority'])) {
+    $tid = $_POST['tid'];
+    $tname = $_POST['tname'];
+    $status = $_POST['status'];
+    $priority = $_POST['priority'];
+    $todo = new Todo($tid,$tname,$status,$priority,null);
+    $todoTable->update($todo);
+}elseif(isset($_POST['tname'],$_POST['priority'])){
     $tname = $_POST['tname'];
     $priority = $_POST['priority'];
-    $todo->add($tname,$priority);
+    $todoTable->add($tname,$priority);
 }elseif(isset($_POST['tid'])){
     //削除処理
     $tid = $_POST['tid'];
-    $todo->delete($tid);
+    $todoTable->delete($tid);
 }
 
-$todos = $todo->get_todoAll();
+$todos = $todoTable->get_todoAll();
 ?>
 <!DOCTYPE html>
 <html>
