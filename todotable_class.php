@@ -28,8 +28,7 @@ class TodoTable
         $all = $sql->fetchAll();
         $ret = array();
 
-        $return = require_once('env.php');
-//        var_dump($return);
+        $return = require('env.php');
 
         foreach($all as $data){
             //ステータス　データ加工

@@ -13,6 +13,10 @@ if(isset($_POST['tname'],$_POST['priority'])){
     $tname = $_POST['tname'];
     $priority = $_POST['priority'];
     $todo->add($tname,$priority);
+}elseif(isset($_POST['tid'])){
+    //削除処理
+    $tid = $_POST['tid'];
+    $todo->delete($tid);
 }
 
 $todos = $todo->get_todoAll();
@@ -39,7 +43,7 @@ $todos = $todo->get_todoAll();
                 <?php
                 foreach($todos as $todo){
                     ?>
-                <tr><td><?php echo htmlspecialchars($todo->getTname()); ?></td><td><?php echo htmlspecialchars($todo->getStatus()); ?></td><td><?php echo htmlspecialchars($todo->getPriority()); ?></td><td><?php echo $todo->getRegistrationTime(); ?></td><td><a href="">削除</a></td></tr>
+                    <tr><td><a href="update.php?tid=<?php echo $todo->getTid(); ?>"><?php echo htmlspecialchars($todo->getTname()); ?></a></td><td><?php echo htmlspecialchars($todo->getStatus()); ?></td><td><?php echo htmlspecialchars($todo->getPriority()); ?></td><td><?php echo $todo->getRegistrationTime(); ?></td><td><a href="deleteKakunin.php?tid=<?php echo $todo->getTid(); ?>">削除</a></td></tr>
                 <?php
                 }
                 ?>
