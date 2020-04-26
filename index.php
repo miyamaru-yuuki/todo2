@@ -1,11 +1,10 @@
 <?php
 
 require_once ('todotable_class.php');
+require_once ('function.php');
 $return = require ('env.php');
-$dsn = "mysql:dbname=mmr";
-$username = "mmr";
-$pass = "pass";
-$db = new PDO($dsn,$username,$pass);
+
+$db = db();
 $todoTable = new TodoTable($db);
     
 //追加処理
@@ -33,10 +32,10 @@ $todos = $todoTable->get_todoAll();
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=yes">
-    <title>todo管理</title>
+    <title><?php echo title(); ?></title>
     <style>
     </style>
-    <link rel="stylesheet" type="text/css" href="styles.css?ver=3">
+    <link rel="stylesheet" type="text/css" href="<?php echo css(); ?>?ver=3">
 </head>
 <body>
 <div id="wrapper">
@@ -50,7 +49,7 @@ $todos = $todoTable->get_todoAll();
                 <?php
                 foreach($todos as $todo){
                     ?>
-                    <tr><td><a href="update.php?tid=<?php echo $todo->getTid(); ?>"><?php echo htmlspecialchars($todo->getTname()); ?></a></td><td><?php echo htmlspecialchars($todo->getStatus()); ?></td><td><?php echo htmlspecialchars($todo->getPriority()); ?></td><td><?php echo $todo->getRegistrationTime(); ?></td><td><a href="deleteKakunin.php?tid=<?php echo $todo->getTid(); ?>">削除</a></td></tr>
+                    <tr><td><a href="update.php?tid=<?php echo $todo->getTid(); ?>"><?php echo h($todo->getTname()); ?></a></td><td><?php echo h($todo->getStatus()); ?></td><td><?php echo h($todo->getPriority()); ?></td><td><?php echo $todo->getRegistrationTime(); ?></td><td><a href="deleteKakunin.php?tid=<?php echo $todo->getTid(); ?>">削除</a></td></tr>
                 <?php
                 }
                 ?>

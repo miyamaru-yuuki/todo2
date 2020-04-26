@@ -1,5 +1,6 @@
 <?php
 require_once ('todotable_class.php');
+require_once ('function.php');
 $return = require ('env.php');
 
 if(isset($_POST['tid'],$_POST['tname'],$_POST['status'],$_POST['priority'])) {
@@ -10,30 +11,19 @@ if(isset($_POST['tid'],$_POST['tname'],$_POST['status'],$_POST['priority'])) {
 }
 
 //進捗　データ加工
-if($status == $return['key']['unfinished']){
-    $statusDisplay = $return['status'][0];
-}elseif($status == $return['key']['finished']){
-    $statusDisplay = $return['status'][1];
-}
-
+$statusDisplay = statusDisplay($status);
 //優先順位　データ加工
-if($priority == $return['key2']['high']){
-    $priorityDisplay = $return['priority'][0];
-}elseif($priority == $return['key2']['medium']){
-    $priorityDisplay = $return['priority'][1];
-}elseif($priority == $return['key2']['row']){
-    $priorityDisplay = $return['priority'][2];
-}
+$priorityDisplay = priorityDisplay($priority);
 ?>
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=yes">
-    <title>todo管理</title>
+    <title><?php echo title(); ?></title>
     <style>
     </style>
-    <link rel="stylesheet" type="text/css" href="styles.css?ver=3">
+    <link rel="stylesheet" type="text/css" href="<?php echo css(); ?>?ver=3">
 </head>
 <body>
 <div id="wrapper">

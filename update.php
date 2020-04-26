@@ -1,15 +1,13 @@
 <?php
 require_once ('todotable_class.php');
+require_once ('function.php');
 $return = require ('env.php');
 
 if(isset($_GET['tid'])){
     $tid = $_GET['tid'];
 }
 
-$dsn = "mysql:dbname=mmr";
-$username = "mmr";
-$pass = "pass";
-$db = new PDO($dsn,$username,$pass);
+$db = db();
 $todo = new TodoTable($db);
 
 $todoSingle = $todo->get_todo($tid);
@@ -21,10 +19,10 @@ $status = (int)$todoSingle->getStatus();
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=yes">
-    <title>todo管理</title>
+    <title><?php echo title(); ?></title>
     <style>
     </style>
-    <link rel="stylesheet" type="text/css" href="styles.css?ver=3">
+    <link rel="stylesheet" type="text/css" href="<?php echo css(); ?>?ver=3">
 </head>
 <body>
 <div id="wrapper">

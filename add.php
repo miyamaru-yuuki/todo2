@@ -1,16 +1,10 @@
 <?php
+require_once ('function.php');
 if(isset($_POST['tname'],$_POST['priority'])){
     $tname = $_POST['tname'];
     $priority = $_POST['priority'];
     //優先順位　データ加工
-    $return = require ('env.php');
-    if($priority == $return['key2']['high']){
-        $priorityDisplay = $return['priority'][0];
-    }elseif($priority == $return['key2']['medium']){
-        $priorityDisplay = $return['priority'][1];
-    }elseif($priority == $return['key2']['row']){
-        $priorityDisplay = $return['priority'][2];
-    }
+    $priorityDisplay = priorityDisplay($priority);
 }
 ?>
 <!DOCTYPE html>
@@ -18,10 +12,10 @@ if(isset($_POST['tname'],$_POST['priority'])){
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=yes">
-    <title>todo管理</title>
+    <title><?php echo title(); ?></title>
     <style>
     </style>
-    <link rel="stylesheet" type="text/css" href="styles.css?ver=3">
+    <link rel="stylesheet" type="text/css" href="<?php echo css(); ?>?ver=3">
 </head>
 <body>
 <div id="wrapper">
