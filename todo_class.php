@@ -33,11 +33,9 @@ class Todo
         return $this->status;
     }
 
-    function getStatusDisplay()
+    function getStatusDisplay($env)
     {
-        $env = require ('env.php');
         $statusDisplay = $env['status'][$this->status];
-
         return $statusDisplay;
     }
 
@@ -46,11 +44,9 @@ class Todo
         return $this->priority;
     }
 
-    function getPriorityDisplay()
+    function getPriorityDisplay($env)
     {
-        $env = require ('env.php');
         $priorityDisplay = $env['priority'][$this->priority];
-
         return $priorityDisplay;
     }
 

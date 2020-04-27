@@ -1,10 +1,12 @@
 <?php
 require_once ('function.php');
+$env = require('env.php');
+
 if(isset($_POST['tname'],$_POST['priority'])){
     $tname = $_POST['tname'];
     $priority = $_POST['priority'];
     //優先順位　データ加工
-    $priorityDisplay = priorityDisplay($priority);
+    $priorityDisplay = priorityDisplay($priority,$env);
 }
 ?>
 <!DOCTYPE html>

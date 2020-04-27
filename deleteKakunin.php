@@ -1,7 +1,7 @@
 <?php
 require_once ('todotable_class.php');
 require_once ('function.php');
-$return = require ('env.php');
+$env = require ('env.php');
 
 if(isset($_GET['tid'])){
     $tid = $_GET['tid'];
@@ -16,9 +16,9 @@ $status = $todoSingle->getStatus();
 $priority = $todoSingle->getPriority();
 
 //進捗　データ加工
-$statusDisplay = statusDisplay($status);
+$statusDisplay = statusDisplay($status,$env);
 //優先順位　データ加工
-$priorityDisplay = priorityDisplay($priority);
+$priorityDisplay = priorityDisplay($priority,$env);
 ?>
 <!DOCTYPE html>
 <html>

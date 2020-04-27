@@ -50,11 +50,9 @@ function css(){
 引数：ステータス番号
 戻り値：ステータスの文字列
 */
-function statusDisplay($status){
-
-    $env = require ('env.php');
+function statusDisplay($status,$env)
+{
     $statusDisplay = $env['status'][$status];
-
     return $statusDisplay;
 }
 
@@ -64,10 +62,8 @@ function statusDisplay($status){
 引数：優先順位番号
 戻り値：優先順位の文字列
 */
-function priorityDisplay($priority){
-
-    $env = require ('env.php');
+function priorityDisplay($priority,$env)
+{
     $priorityDisplay = $env['priority'][$priority];
-
     return $priorityDisplay;
 }

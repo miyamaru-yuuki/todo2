@@ -1,7 +1,7 @@
 <?php
 require_once ('todotable_class.php');
 require_once ('function.php');
-$return = require ('env.php');
+$env = require ('env.php');
 
 if(isset($_POST['tid'],$_POST['tname'],$_POST['status'],$_POST['priority'])) {
     $tid = $_POST['tid'];
@@ -11,9 +11,9 @@ if(isset($_POST['tid'],$_POST['tname'],$_POST['status'],$_POST['priority'])) {
 }
 
 //進捗　データ加工
-$statusDisplay = statusDisplay($status);
+$statusDisplay = statusDisplay($status,$env);
 //優先順位　データ加工
-$priorityDisplay = priorityDisplay($priority);
+$priorityDisplay = priorityDisplay($priority,$env);
 ?>
 <!DOCTYPE html>
 <html>
