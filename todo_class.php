@@ -33,10 +33,27 @@ class Todo
         return $this->status;
     }
 
+    function getStatusDisplay()
+    {
+        $env = require ('env.php');
+        $statusDisplay = $env['status'][$this->status];
+
+        return $statusDisplay;
+    }
+
     public function getPriority()
     {
         return $this->priority;
     }
+
+    function getPriorityDisplay()
+    {
+        $env = require ('env.php');
+        $priorityDisplay = $env['priority'][$this->priority];
+
+        return $priorityDisplay;
+    }
+
     public function getRegistrationTime()
     {
         return $this->registrationTime;
