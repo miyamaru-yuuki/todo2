@@ -45,42 +45,42 @@ function css(){
 }
 
 /*
-関数名：db
-機能：データベースに接続する
-引数：なし
-戻り値：データベース接続のインスタンス
+関数名：statusDisplay
+機能：ステータス番号を対応する文字列に変換する
+引数：ステータス番号
+戻り値：ステータスの文字列
 */
 function statusDisplay($status){
 
-    $return = require ('env.php');
+    $env = require ('env.php');
     $statusDisplay = null;
 
-    if($status == $return['key']['unfinished']){
-        $statusDisplay = $return['status'][0];
-    }elseif($status == $return['key']['finished']){
-        $statusDisplay = $return['status'][1];
+    if($status == $env['key']['unfinished']){
+        $statusDisplay = $env['status'][0];
+    }elseif($status == $env['key']['finished']){
+        $statusDisplay = $env['status'][1];
     }
 
     return $statusDisplay;
 }
 
 /*
-関数名：db
-機能：データベースに接続する
-引数：なし
-戻り値：データベース接続のインスタンス
+関数名：priorityDisplay
+機能：優先順位番号を対応する文字列に変換する
+引数：優先順位番号
+戻り値：優先順位の文字列
 */
 function priorityDisplay($priority){
 
-    $return = require ('env.php');
+    $env = require ('env.php');
     $priorityDisplay = null;
 
-    if($priority == $return['key2']['high']){
-        $priorityDisplay = $return['priority'][0];
-    }elseif($priority == $return['key2']['medium']){
-        $priorityDisplay = $return['priority'][1];
-    }elseif($priority == $return['key2']['row']){
-        $priorityDisplay = $return['priority'][2];
+    if($priority == $env['key2']['high']){
+        $priorityDisplay = $env['priority'][0];
+    }elseif($priority == $env['key2']['medium']){
+        $priorityDisplay = $env['priority'][1];
+    }elseif($priority == $env['key2']['row']){
+        $priorityDisplay = $env['priority'][2];
     }
 
     return $priorityDisplay;

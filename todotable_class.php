@@ -28,26 +28,13 @@ class TodoTable
         $all = $sql->fetchAll();
         $ret = array();
 
-        $return = require('env.php');
-
         foreach($all as $data){
-            //ステータス　データ加工
-            if($data['status'] == $return['key']['unfinished']){
-                $data['status'] = $return['status'][0];
-            }elseif($data['status'] == $return['key']['finished']){
-                $data['status'] = $return['status'][1];
-            }
-
+            //進捗　データ加工
+            $statusDisplay = statusDisplay($data['status']);
             //優先順位　データ加工
-            if($data['priority'] == $return['key2']['high']){
-                $data['priority'] = $return['priority'][0];
-            }elseif($data['priority'] == $return['key2']['medium']){
-                $data['priority'] = $return['priority'][1];
-            }elseif($data['priority'] == $return['key2']['row']){
-                $data['priority'] = $return['priority'][2];
-            }
+            $priorityDisplay = priorityDisplay($data['priority']);
 
-            $todo = new Todo($data['tid'],$data['tname'],$data['status'],$data['priority'],$data['registrationTime']);
+            $todo = new Todo($data['tid'],$data['tname'],$statusDisplay,$priorityDisplay,$data['registrationTime']);
             $ret[] = $todo;
         }
 
