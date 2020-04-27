@@ -53,13 +53,7 @@ function css(){
 function statusDisplay($status){
 
     $env = require ('env.php');
-    $statusDisplay = null;
-
-    if($status == $env['key']['unfinished']){
-        $statusDisplay = $env['status'][0];
-    }elseif($status == $env['key']['finished']){
-        $statusDisplay = $env['status'][1];
-    }
+    $statusDisplay = $env['status'][$status];
 
     return $statusDisplay;
 }
@@ -73,15 +67,7 @@ function statusDisplay($status){
 function priorityDisplay($priority){
 
     $env = require ('env.php');
-    $priorityDisplay = null;
-
-    if($priority == $env['key2']['high']){
-        $priorityDisplay = $env['priority'][0];
-    }elseif($priority == $env['key2']['medium']){
-        $priorityDisplay = $env['priority'][1];
-    }elseif($priority == $env['key2']['row']){
-        $priorityDisplay = $env['priority'][2];
-    }
+    $priorityDisplay = $env['priority'][$priority];
 
     return $priorityDisplay;
 }

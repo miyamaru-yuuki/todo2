@@ -48,8 +48,12 @@ $todos = $todoTable->get_todoAll();
                 <tr><th>Todoの内容</th><th>進捗</th><th>優先順位</th><th>登録時間</th><th>削除</th></tr>
                 <?php
                 foreach($todos as $todo){
+                    //進捗　データ加工
+                    $statusDisplay = statusDisplay($todo->getStatus());
+                    //優先順位　データ加工
+                    $priorityDisplay = priorityDisplay($todo->getPriority());
                     ?>
-                    <tr><td><a href="update.php?tid=<?php echo $todo->getTid(); ?>"><?php echo h($todo->getTname()); ?></a></td><td><?php echo h($todo->getStatus()); ?></td><td><?php echo h($todo->getPriority()); ?></td><td><?php echo $todo->getRegistrationTime(); ?></td><td><a href="deleteKakunin.php?tid=<?php echo $todo->getTid(); ?>">削除</a></td></tr>
+                    <tr><td><a href="update.php?tid=<?php echo $todo->getTid(); ?>"><?php echo h($todo->getTname()); ?></a></td><td><?php echo h($statusDisplay); ?></td><td><?php echo h($priorityDisplay); ?></td><td><?php echo $todo->getRegistrationTime(); ?></td><td><a href="deleteKakunin.php?tid=<?php echo $todo->getTid(); ?>">削除</a></td></tr>
                 <?php
                 }
                 ?>

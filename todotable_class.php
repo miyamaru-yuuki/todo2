@@ -29,12 +29,7 @@ class TodoTable
         $ret = array();
 
         foreach($all as $data){
-            //進捗　データ加工
-            $statusDisplay = statusDisplay($data['status']);
-            //優先順位　データ加工
-            $priorityDisplay = priorityDisplay($data['priority']);
-
-            $todo = new Todo($data['tid'],$data['tname'],$statusDisplay,$priorityDisplay,$data['registrationTime']);
+            $todo = new Todo($data['tid'],$data['tname'],$data['status'],$data['priority'],$data['registrationTime']);
             $ret[] = $todo;
         }
 
