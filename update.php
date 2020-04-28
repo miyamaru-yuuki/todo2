@@ -2,7 +2,7 @@
 require_once ('todotable_class.php');
 require_once ('function.php');
 
-$env = getEnv();
+$env = getStatusPriority();
 
 if(isset($_GET['tid'])){
     $tid = $_GET['tid'];

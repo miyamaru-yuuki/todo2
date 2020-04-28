@@ -2,7 +2,7 @@
 require_once ('function.php');
 require_once ('todotable_class.php');
 
-$env = getEnv();
+$env = getStatusPriority();
 
 $db = db();
 $todoTable = new TodoTable($db);

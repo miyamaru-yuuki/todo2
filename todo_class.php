@@ -34,7 +34,7 @@ class Todo
 
     function getStatusDisplay()
     {
-        $env = getEnv();
+        $env = getStatusPriority();
         $statusDisplay = $env['status'][$this->status];
         return $statusDisplay;
     }
@@ -46,7 +46,7 @@ class Todo
 
     function getPriorityDisplay()
     {
-        $env = getEnv();
+        $env = getStatusPriority();
         $priorityDisplay = $env['priority'][$this->priority];
         return $priorityDisplay;
     }
