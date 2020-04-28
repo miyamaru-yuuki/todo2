@@ -1,7 +1,8 @@
 <?php
 require_once ('todotable_class.php');
 require_once ('function.php');
-$env = require ('env.php');
+
+$env = getEnv2();
 
 if(isset($_GET['tid'])){
     $tid = $_GET['tid'];
@@ -11,8 +12,8 @@ $db = db();
 $todo = new TodoTable($db);
 
 $todoSingle = $todo->get_todo($tid);
-$priority = $todoSingle->getPriority($env);
-$status = $todoSingle->getStatus($env);
+$priority = $todoSingle->getPriority();
+$status = $todoSingle->getStatus();
 ?>
 <!DOCTYPE html>
 <html>

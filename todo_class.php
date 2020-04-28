@@ -33,8 +33,9 @@ class Todo
         return $this->status;
     }
 
-    function getStatusDisplay($env)
+    function getStatusDisplay()
     {
+        $env = $this->getEnv();
         $statusDisplay = $env['status'][$this->status];
         return $statusDisplay;
     }
@@ -44,8 +45,9 @@ class Todo
         return $this->priority;
     }
 
-    function getPriorityDisplay($env)
+    function getPriorityDisplay()
     {
+        $env = $this->getEnv();
         $priorityDisplay = $env['priority'][$this->priority];
         return $priorityDisplay;
     }
@@ -53,5 +55,13 @@ class Todo
     public function getRegistrationTime()
     {
         return $this->registrationTime;
+    }
+
+    private function getEnv()
+    {
+        return [
+            'status'=>['未了','完了'],
+            'priority'=>['高','中','低']
+        ];
     }
 }

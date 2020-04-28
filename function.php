@@ -1,5 +1,4 @@
 <?php
-
 /*
 関数名：db
 機能：データベースに接続する
@@ -50,8 +49,9 @@ function css(){
 引数：ステータス番号
 戻り値：ステータスの文字列
 */
-function statusDisplay($status,$env)
+function statusDisplay($status)
 {
+    $env = getEnv2();
     $statusDisplay = $env['status'][$status];
     return $statusDisplay;
 }
@@ -62,8 +62,23 @@ function statusDisplay($status,$env)
 引数：優先順位番号
 戻り値：優先順位の文字列
 */
-function priorityDisplay($priority,$env)
+function priorityDisplay($priority)
 {
+    $env = getEnv2();
     $priorityDisplay = $env['priority'][$priority];
     return $priorityDisplay;
+}
+
+/*
+関数名：getEnv
+機能：ステータスと優先順位の設定情報を読み込む
+引数：なし
+戻り値：ステータスと優先順位の設定情報
+*/
+function getEnv2()
+{
+    return [
+        'status'=>['未了','完了'],
+        'priority'=>['高','中','低']
+    ];
 }

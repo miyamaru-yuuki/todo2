@@ -1,7 +1,8 @@
 <?php
 require_once ('todotable_class.php');
 require_once ('function.php');
-$env = require ('env.php');
+
+$env = getEnv2();
 
 $db = db();
 $todoTable = new TodoTable($db);
@@ -48,7 +49,7 @@ $todos = $todoTable->get_todoAll();
                 <?php
                 foreach($todos as $todo){
                     ?>
-                    <tr><td><a href="update.php?tid=<?php echo $todo->getTid(); ?>"><?php echo h($todo->getTname()); ?></a></td><td><?php echo h($todo->getStatusDisplay($env)); ?></td><td><?php echo h($todo->getPriorityDisplay($env)); ?></td><td><?php echo $todo->getRegistrationTime(); ?></td><td><a href="deleteKakunin.php?tid=<?php echo $todo->getTid(); ?>">削除</a></td></tr>
+                    <tr><td><a href="update.php?tid=<?php echo $todo->getTid(); ?>"><?php echo h($todo->getTname()); ?></a></td><td><?php echo h($todo->getStatusDisplay()); ?></td><td><?php echo h($todo->getPriorityDisplay()); ?></td><td><?php echo $todo->getRegistrationTime(); ?></td><td><a href="deleteKakunin.php?tid=<?php echo $todo->getTid(); ?>">削除</a></td></tr>
                 <?php
                 }
                 ?>
