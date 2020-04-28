@@ -1,8 +1,8 @@
 <?php
-require_once ('todotable_class.php');
 require_once ('function.php');
+require_once ('todotable_class.php');
 
-$env = getEnv2();
+$env = getEnv();
 
 $db = db();
 $todoTable = new TodoTable($db);

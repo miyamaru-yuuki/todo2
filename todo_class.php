@@ -1,5 +1,4 @@
 <?php
-
 class Todo
 {
     // プロパティの宣言
@@ -35,7 +34,7 @@ class Todo
 
     function getStatusDisplay()
     {
-        $env = $this->getEnv();
+        $env = getEnv();
         $statusDisplay = $env['status'][$this->status];
         return $statusDisplay;
     }
@@ -47,7 +46,7 @@ class Todo
 
     function getPriorityDisplay()
     {
-        $env = $this->getEnv();
+        $env = getEnv();
         $priorityDisplay = $env['priority'][$this->priority];
         return $priorityDisplay;
     }
@@ -55,13 +54,5 @@ class Todo
     public function getRegistrationTime()
     {
         return $this->registrationTime;
-    }
-
-    private function getEnv()
-    {
-        return [
-            'status'=>['未了','完了'],
-            'priority'=>['高','中','低']
-        ];
     }
 }

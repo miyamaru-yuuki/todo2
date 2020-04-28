@@ -51,7 +51,7 @@ function css(){
 */
 function statusDisplay($status)
 {
-    $env = getEnv2();
+    $env = getEnv();
     $statusDisplay = $env['status'][$status];
     return $statusDisplay;
 }
@@ -64,7 +64,7 @@ function statusDisplay($status)
 */
 function priorityDisplay($priority)
 {
-    $env = getEnv2();
+    $env = getEnv();
     $priorityDisplay = $env['priority'][$priority];
     return $priorityDisplay;
 }
@@ -75,7 +75,7 @@ function priorityDisplay($priority)
 引数：なし
 戻り値：ステータスと優先順位の設定情報
 */
-function getEnv2()
+function getEnv()
 {
     return [
         'status'=>['未了','完了'],
