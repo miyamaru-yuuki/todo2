@@ -7,12 +7,12 @@ if(isset($_POST['tid'],$_POST['tname'],$_POST['status'],$_POST['priority'])) {
     $tname = $_POST['tname'];
     $status = $_POST['status'];
     $priority = $_POST['priority'];
-}
 
-//進捗　データ加工
-$statusDisplay = statusDisplay($status);
-//優先順位　データ加工
-$priorityDisplay = priorityDisplay($priority);
+    //進捗　データ加工
+    $statusDisplay = statusDisplay($status);
+    //優先順位　データ加工
+    $priorityDisplay = priorityDisplay($priority);
+}
 ?>
 <!DOCTYPE html>
 <html>

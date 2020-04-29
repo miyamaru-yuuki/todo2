@@ -60,11 +60,7 @@ $todos = $todoTable->get_todoAll();
                 <p>優先順位 
                     <select name="priority">
                         <?php
-                        foreach($env['priority'] as $key => $value){
-                        ?>
-                        <option value=<?php echo $key; ?> selected><?php echo $value; ?></option>
-                            <?php
-                        }
+                            getSelectBox($env['priority'],$priority);
                         ?>
                     </select>
                 </p>

@@ -4,12 +4,10 @@ require_once ('function.php');
 
 if(isset($_GET['tid'])){
     $tid = $_GET['tid'];
+    $db = db();
+    $todo = new TodoTable($db);
+    $todoSingle = $todo->get_todo($tid);
 }
-
-$db = db();
-$todo = new TodoTable($db);
-
-$todoSingle = $todo->get_todo($tid);
 
 $status = $todoSingle->getStatus();
 $priority = $todoSingle->getPriority();

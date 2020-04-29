@@ -6,12 +6,11 @@ $env = getStatusPriority();
 
 if(isset($_GET['tid'])){
     $tid = $_GET['tid'];
+    $db = db();
+    $todo = new TodoTable($db);
+    $todoSingle = $todo->get_todo($tid);
 }
 
-$db = db();
-$todo = new TodoTable($db);
-
-$todoSingle = $todo->get_todo($tid);
 $priority = $todoSingle->getPriority();
 $status = $todoSingle->getStatus();
 ?>
@@ -37,26 +36,14 @@ $status = $todoSingle->getStatus();
                 <div>進捗
                     <select name="status">
                         <?php
-                        foreach($env['status'] as $key => $value){
-                            if($key == $status){
-                                echo '<option value="' .$key. '" selected>' .$value. '</option>';
-                            }else{
-                                echo '<option value="' .$key. '">' .$value. '</option>';
-                            }
-                        }
+                            getSelectBox($env['status'],$status);
                         ?>
                     </select>
                 </div>
                 <div>優先順位
                     <select name="priority">
                         <?php
-                        foreach($env['priority'] as $key => $value){
-                            if($key == $priority){
-                                echo '<option value="' .$key. '" selected>' .$value. '</option>';
-                            }else{
-                                echo '<option value="' .$key. '">' .$value. '</option>';
-                            }
-                        }
+                            getSelectBox($env['priority'],$priority);
                         ?>
                     </select>
                 </div>

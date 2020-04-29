@@ -82,3 +82,20 @@ function getStatusPriority()
         'priority'=>['高','中','低']
     ];
 }
+
+/*
+関数名：getEnv
+機能：ステータスと優先順位の設定情報を読み込む
+引数：なし
+戻り値：ステータスと優先順位の設定情報
+*/
+function getSelectBox($env,$keyVal)
+{
+    foreach($env as $key => $value){
+        if($key == $keyVal){
+            echo '<option value="' .$key. '" selected>' .$value. '</option>';
+        }else{
+            echo '<option value="' .$key. '">' .$value. '</option>';
+        }
+    }
+}
