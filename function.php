@@ -44,33 +44,7 @@ function css(){
 }
 
 /*
-関数名：statusDisplay
-機能：ステータス番号を対応する文字列に変換する
-引数：ステータス番号
-戻り値：ステータスの文字列
-*/
-//function statusDisplay($status)
-//{
-//    $env = getStatusPriority();
-//    $statusDisplay = $env['status'][$status];
-//    return $statusDisplay;
-//}
-
-/*
-関数名：priorityDisplay
-機能：優先順位番号を対応する文字列に変換する
-引数：優先順位番号
-戻り値：優先順位の文字列
-*/
-function priorityDisplay($priority)
-{
-    $env = getStatusPriority();
-    $priorityDisplay = $env['priority'][$priority];
-    return $priorityDisplay;
-}
-
-/*
-関数名：getEnv
+関数名：getStatusPriority
 機能：ステータスと優先順位の設定情報を読み込む
 引数：なし
 戻り値：ステータスと優先順位の設定情報
