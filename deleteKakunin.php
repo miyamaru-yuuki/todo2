@@ -1,13 +1,14 @@
 <?php
-require_once ('todotable_class.php');
 require_once ('function.php');
+require_once ('todotable_class.php');
 
-if(isset($_GET['tid'])){
-    $tid = $_GET['tid'];
-    $db = db();
-    $todo = new TodoTable($db);
-    $todoSingle = $todo->get_todo($tid);
+if(!isset($_GET['tid'])){
+    exit();
 }
+
+$tid = $_GET['tid'];
+$todo = new TodoTable(db());
+$todoSingle = $todo->get_todo($tid);
 
 $status = $todoSingle->getStatus();
 $priority = $todoSingle->getPriority();

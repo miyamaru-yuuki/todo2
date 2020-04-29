@@ -3,9 +3,7 @@ require_once ('function.php');
 require_once ('todotable_class.php');
 
 $env = getStatusPriority();
-
-$db = db();
-$todoTable = new TodoTable($db);
+$todoTable = new TodoTable(db());
     
 //追加処理
 if(isset($_POST['tid'],$_POST['tname'],$_POST['status'],$_POST['priority'])) {
@@ -23,6 +21,8 @@ if(isset($_POST['tid'],$_POST['tname'],$_POST['status'],$_POST['priority'])) {
     //削除処理
     $tid = $_POST['tid'];
     $todoTable->delete($tid);
+}else{
+    exit();
 }
 
 $todos = $todoTable->get_todoAll();

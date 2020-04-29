@@ -84,10 +84,10 @@ function getStatusPriority()
 }
 
 /*
-関数名：getEnv
-機能：ステータスと優先順位の設定情報を読み込む
+関数名：getSelectBox
+機能：セレクトボックスを作成する
 引数：なし
-戻り値：ステータスと優先順位の設定情報
+戻り値：なし
 */
 function getSelectBox($env,$keyVal)
 {
