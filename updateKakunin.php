@@ -13,11 +13,6 @@ $status = $_POST['status'];
 $priority = $_POST['priority'];
 
 $todo = new Todo($tid,$tname,$status,$priority,null);
-
-//進捗　データ加工
-$statusDisplay = $todo->getStatusDisplay();
-//優先順位　データ加工
-$priorityDisplay = $todo->getPriorityDisplay();
 ?>
 <!DOCTYPE html>
 <html>
@@ -38,8 +33,8 @@ $priorityDisplay = $todo->getPriorityDisplay();
         <main>
             <form method="POST" action="index.php">
                 <p>Todoの内容:<?php echo $todo->getTname(); ?></p>
-                <p>進捗:<?php echo $statusDisplay; ?></p>
-                <p>優先順位:<?php echo $priorityDisplay; ?></p>
+                <p>進捗:<?php echo $todo->getStatusDisplay(); ?></p>
+                <p>優先順位:<?php echo $todo->getPriorityDisplay(); ?></p>
                 <input type="hidden" name="tid" value="<?php echo $todo->getTid(); ?>">
                 <input type="hidden" name="tname" value="<?php echo $todo->getTname(); ?>">
                 <input type="hidden" name="status" value="<?php echo $todo->getStatus(); ?>">
