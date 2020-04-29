@@ -11,9 +11,6 @@ $tid = $_GET['tid'];
 $env = getStatusPriority();
 $todo = new TodoTable(db());
 $todoSingle = $todo->get_todo($tid);
-
-$priority = $todoSingle->getPriority();
-$status = $todoSingle->getStatus();
 ?>
 <!DOCTYPE html>
 <html>
@@ -37,14 +34,14 @@ $status = $todoSingle->getStatus();
                 <div>進捗
                     <select name="status">
                         <?php
-                            getSelectBox($env['status'],$status);
+                            getSelectBox($env['status'],$todoSingle->getStatus());
                         ?>
                     </select>
                 </div>
                 <div>優先順位
                     <select name="priority">
                         <?php
-                            getSelectBox($env['priority'],$priority);
+                            getSelectBox($env['priority'],$todoSingle->getPriority());
                         ?>
                     </select>
                 </div>
