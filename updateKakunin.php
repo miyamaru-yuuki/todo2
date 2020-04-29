@@ -4,6 +4,7 @@ require_once ('todotable_class.php');
 
 if(!isset($_POST['tid'],$_POST['tname'],$_POST['status'],$_POST['priority'])) {
     header("Location: http://mmr.e5.valueserver.jp/todo2/index.php?error=1");
+    exit();
 }
 
 $tid = $_POST['tid'];
@@ -14,9 +15,9 @@ $priority = $_POST['priority'];
 $todo = new Todo($tid,$tname,$status,$priority,null);
 
 //進捗　データ加工
-$statusDisplay = statusDisplay($todo->getStatus());
+$statusDisplay = $todo->getStatusDisplay();
 //優先順位　データ加工
-$priorityDisplay = priorityDisplay($todo->getPriority());
+$priorityDisplay = $todo->getPriorityDisplay();
 ?>
 <!DOCTYPE html>
 <html>

@@ -3,6 +3,7 @@ require_once ('function.php');
 
 if(!isset($_POST['tname'],$_POST['priority'])){
     header("Location: http://mmr.e5.valueserver.jp/todo2/index.php?error=1");
+    exit();
 }
     $tname = $_POST['tname'];
     $priority = $_POST['priority'];
