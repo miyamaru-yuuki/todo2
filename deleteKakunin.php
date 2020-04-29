@@ -10,14 +10,6 @@ if(!isset($_GET['tid'])){
 $tid = $_GET['tid'];
 $todo = new TodoTable(db());
 $todoSingle = $todo->get_todo($tid);
-
-$status = $todoSingle->getStatus();
-$priority = $todoSingle->getPriority();
-
-//進捗　データ加工
-$statusDisplay = statusDisplay($status);
-//優先順位　データ加工
-$priorityDisplay = priorityDisplay($priority);
 ?>
 <!DOCTYPE html>
 <html>
@@ -38,8 +30,8 @@ $priorityDisplay = priorityDisplay($priority);
         <main>
             <form method="POST" action="index.php">
                 <p>Todoの内容:<?php echo $todoSingle->getTname(); ?></p>
-                <p>進捗:<?php echo $statusDisplay; ?></p>
-                <p>優先順位:<?php echo $priorityDisplay; ?></p>
+                <p>進捗:<?php echo $todoSingle->getStatusDisplay(); ?></p>
+                <p>優先順位:<?php echo$todoSingle->getPriorityDisplay(); ?></p>
                 <p>登録時間:<?php echo $todoSingle->getRegistrationTime(); ?></p>
                 <input type="hidden" name="tid" value="<?php echo $tid; ?>">
                 <p>このデータを削除してよろしいですか？</p>

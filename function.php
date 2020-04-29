@@ -49,12 +49,12 @@ function css(){
 引数：ステータス番号
 戻り値：ステータスの文字列
 */
-function statusDisplay($status)
-{
-    $env = getStatusPriority();
-    $statusDisplay = $env['status'][$status];
-    return $statusDisplay;
-}
+//function statusDisplay($status)
+//{
+//    $env = getStatusPriority();
+//    $statusDisplay = $env['status'][$status];
+//    return $statusDisplay;
+//}
 
 /*
 関数名：priorityDisplay
