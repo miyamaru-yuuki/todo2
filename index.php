@@ -2,6 +2,11 @@
 require_once ('function.php');
 require_once ('todotable_class.php');
 
+//エラー処理
+if(isset($_GET['error']) && $_GET['error'] == 1){
+    echo 'ページを表示できません。トップページから入りなおしてください。';
+}
+
 $env = getStatusPriority();
 $todoTable = new TodoTable(db());
     
@@ -21,8 +26,6 @@ if(isset($_POST['tid'],$_POST['tname'],$_POST['status'],$_POST['priority'])) {
     //削除処理
     $tid = $_POST['tid'];
     $todoTable->delete($tid);
-}else{
-    exit('ページを表示できません。トップページから入りなおしてください。');
 }
 
 $todos = $todoTable->get_todoAll();

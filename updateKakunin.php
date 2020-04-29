@@ -3,7 +3,7 @@ require_once ('function.php');
 require_once ('todotable_class.php');
 
 if(!isset($_POST['tid'],$_POST['tname'],$_POST['status'],$_POST['priority'])) {
-    exit('ページを表示できません。トップページから入りなおしてください。');
+    header("Location: http://mmr.e5.valueserver.jp/todo2/index.php?error=1");
 }
 
 $tid = $_POST['tid'];
@@ -11,10 +11,12 @@ $tname = $_POST['tname'];
 $status = $_POST['status'];
 $priority = $_POST['priority'];
 
+$todo = new Todo($tid,$tname,$status,$priority,null);
+
 //進捗　データ加工
-$statusDisplay = statusDisplay($status);
+$statusDisplay = statusDisplay($todo->getStatus());
 //優先順位　データ加工
-$priorityDisplay = priorityDisplay($priority);
+$priorityDisplay = priorityDisplay($todo->getPriority());
 ?>
 <!DOCTYPE html>
 <html>
@@ -34,13 +36,13 @@ $priorityDisplay = priorityDisplay($priority);
     <div id="contents">
         <main>
             <form method="POST" action="index.php">
-                <p>Todoの内容:<?php echo $tname; ?></p>
+                <p>Todoの内容:<?php echo $todo->getTname(); ?></p>
                 <p>進捗:<?php echo $statusDisplay; ?></p>
                 <p>優先順位:<?php echo $priorityDisplay; ?></p>
-                <input type="hidden" name="tid" value="<?php echo $tid; ?>">
-                <input type="hidden" name="tname" value="<?php echo $tname; ?>">
-                <input type="hidden" name="status" value="<?php echo $status; ?>">
-                <input type="hidden" name="priority" value="<?php echo $priority; ?>">
+                <input type="hidden" name="tid" value="<?php echo $todo->getTid(); ?>">
+                <input type="hidden" name="tname" value="<?php echo $todo->getTname(); ?>">
+                <input type="hidden" name="status" value="<?php echo $todo->getStatus(); ?>">
+                <input type="hidden" name="priority" value="<?php echo $todo->getPriority(); ?>">
                 <p>この内容で編集してよろしいですか？</p>
                 <p><input type="submit" value="OK"></p>
             </form>

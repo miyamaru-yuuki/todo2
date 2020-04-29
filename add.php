@@ -2,7 +2,7 @@
 require_once ('function.php');
 
 if(!isset($_POST['tname'],$_POST['priority'])){
-    exit('ページを表示できません。トップページから入りなおしてください。');
+    header("Location: http://mmr.e5.valueserver.jp/todo2/index.php?error=1");
 }
     $tname = $_POST['tname'];
     $priority = $_POST['priority'];

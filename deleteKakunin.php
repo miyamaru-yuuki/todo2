@@ -3,7 +3,7 @@ require_once ('function.php');
 require_once ('todotable_class.php');
 
 if(!isset($_GET['tid'])){
-    exit('ページを表示できません。トップページから入りなおしてください。');
+    header("Location: http://mmr.e5.valueserver.jp/todo2/index.php?error=1");
 }
 
 $tid = $_GET['tid'];
