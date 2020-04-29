@@ -2,7 +2,7 @@
 require_once ('function.php');
 
 if(!isset($_POST['tname'],$_POST['priority'])){
-    exit();
+    exit('ページを表示できません。トップページから入りなおしてください。');
 }
     $tname = $_POST['tname'];
     $priority = $_POST['priority'];

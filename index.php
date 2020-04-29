@@ -22,7 +22,7 @@ if(isset($_POST['tid'],$_POST['tname'],$_POST['status'],$_POST['priority'])) {
     $tid = $_POST['tid'];
     $todoTable->delete($tid);
 }else{
-    exit();
+    exit('ページを表示できません。トップページから入りなおしてください。');
 }
 
 $todos = $todoTable->get_todoAll();

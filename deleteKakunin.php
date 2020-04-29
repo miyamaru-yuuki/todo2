@@ -3,7 +3,7 @@ require_once ('function.php');
 require_once ('todotable_class.php');
 
 if(!isset($_GET['tid'])){
-    exit();
+    exit('ページを表示できません。トップページから入りなおしてください。');
 }
 
 $tid = $_GET['tid'];

@@ -3,7 +3,7 @@ require_once ('function.php');
 require_once ('todotable_class.php');
 
 if(!isset($_POST['tid'],$_POST['tname'],$_POST['status'],$_POST['priority'])) {
-    exit();
+    exit('ページを表示できません。トップページから入りなおしてください。');
 }
 
 $tid = $_POST['tid'];
