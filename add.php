@@ -7,7 +7,9 @@ if(!isset($_POST['tname'],$_POST['priority'])){
     exit();
 }
 
-if(empty($_POST['tname'])){
+$karahantei = str_replace(array(" ", "　"), "", $_POST['tname']);
+
+if(empty($karahantei)){
     header("Location: http://mmr.e5.valueserver.jp/todo2/index.php?error=2");
     exit();
 }

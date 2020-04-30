@@ -12,7 +12,9 @@ $tname = $_POST['tname'];
 $status = $_POST['status'];
 $priority = $_POST['priority'];
 
-if(empty($_POST['tname'])){
+$karahantei = str_replace(array(" ", "　"), "", $tname);
+
+if(empty($karahantei)){
     header("Location: http://mmr.e5.valueserver.jp/todo2/update.php?error=2&tid=" .$tid);
     exit();
 }
