@@ -7,15 +7,15 @@ if(!isset($_POST['tid'],$_POST['tname'],$_POST['status'],$_POST['priority'])) {
     exit();
 }
 
-if(empty($_POST['tname'])){
-    header("Location: http://mmr.e5.valueserver.jp/todo2/index.php?error=2");
-    exit();
-}
-
 $tid = $_POST['tid'];
 $tname = $_POST['tname'];
 $status = $_POST['status'];
 $priority = $_POST['priority'];
+
+if(empty($_POST['tname'])){
+    header("Location: http://mmr.e5.valueserver.jp/todo2/update.php?error=2&tid=" .$tid);
+    exit();
+}
 
 $todo = new Todo($tid,$tname,$status,$priority,null);
 ?>

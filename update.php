@@ -7,6 +7,11 @@ if(!isset($_GET['tid'])){
     exit();
 }
 
+//エラー処理
+if(isset($_GET['error']) && $_GET['error'] == 2){
+    echo '未入力の項目があります。';
+}
+
 $tid = $_GET['tid'];
 $env = getStatusPriority();
 $todo = new TodoTable(db());
