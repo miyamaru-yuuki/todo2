@@ -7,6 +7,11 @@ if(!isset($_POST['tid'],$_POST['tname'],$_POST['status'],$_POST['priority'])) {
     exit();
 }
 
+if(empty($_POST['tname'])){
+    header("Location: http://mmr.e5.valueserver.jp/todo2/index.php?error=2");
+    exit();
+}
+
 $tid = $_POST['tid'];
 $tname = $_POST['tname'];
 $status = $_POST['status'];

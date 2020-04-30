@@ -7,6 +7,11 @@ if(!isset($_POST['tname'],$_POST['priority'])){
     exit();
 }
 
+if(empty($_POST['tname'])){
+    header("Location: http://mmr.e5.valueserver.jp/todo2/index.php?error=2");
+    exit();
+}
+
 $tname = $_POST['tname'];
 $priority = $_POST['priority'];
 $todo = new Todo(null,$tname,null,$priority,null);
