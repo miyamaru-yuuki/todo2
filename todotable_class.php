@@ -21,13 +21,38 @@ class TodoTable
         return $todo;
     }
 
-    public function get_todoAll($sort)
+    public function get_todoAll($sorttname,$sortstatus,$sortpriority,$sortRegistrationTime)
     {
-        if(!$sort){
-            $sql = $this->db->prepare("SELECT * FROM todo2 ORDER BY registrationTime ASC");
-        }else{
-            $sql = $this->db->prepare("SELECT * FROM todo2 ORDER BY registrationTime DESC");
+        if($sorttname == 1){
+            $sorttname = "DESC";
+        }elseif($sorttname == 0){
+            $sorttname = "ASC";
         }
+
+        if($sortstatus == 1){
+            $sortstatus = "DESC";
+        }elseif($sortstatus == 0){
+            $sortstatus = "ASC";
+        }
+
+        if($sortpriority == 1){
+            $sortpriority = "DESC";
+        }elseif($sortpriority == 0){
+            $sortpriority = "ASC";
+        }
+
+        if($sortRegistrationTime == 1){
+            $sortRegistrationTime = "DESC";
+        }elseif($sortRegistrationTime == 0){
+            $sortRegistrationTime = "ASC";
+        }
+
+        $sql = $this->db->prepare("SELECT * FROM todo2 ORDER BY sorttname ?, sortstatus ?, sortpriority ?, registrationTime ?");
+
+        $sql->bindValue( 1 , $sorttname);
+        $sql->bindValue( 2 , $sortstatus);
+        $sql->bindValue( 3 , $sortpriority);
+        $sql->bindValue( 4 , $sortRegistrationTime);
         $sql->execute();
         $all = $sql->fetchAll();
         $ret = array();

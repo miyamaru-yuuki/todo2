@@ -13,7 +13,6 @@ if(isset($_GET['error']) && $_GET['error'] == 1){
 
 $env = getStatusPriority();
 $todoTable = new TodoTable(db());
-$sort = null;
     
 //追加処理
 if(isset($_POST['tid'],$_POST['tname'],$_POST['status'],$_POST['priority'])) {
@@ -34,10 +33,40 @@ if(isset($_POST['tid'],$_POST['tname'],$_POST['status'],$_POST['priority'])) {
 }
 
 //ソート
-if(isset($_GET['sort'])){
-    $sort = $_GET['sort'];
+$sorttname = 0;
+$sortstatus = 0;
+$sortpriority = 0;
+$sortRegistrationTime = 0;
+
+if(isset($_GET['sorttname'])){
+    if($_GET['sorttname'] == 0){
+        $sorttname = 1;
+    }else{
+        $sorttname = 0;
+    }
 }
-$todos = $todoTable->get_todoAll($sort);
+if(isset($_GET['sortstatus'])){
+    if($_GET['sortstatus'] == 0){
+        $sortstatus = 1;
+    }else{
+        $sortstatus = 0;
+    }
+}
+if(isset($_GET['sortpriority'])){
+    if($_GET['sortpriority'] == 0){
+        $sortpriority = 1;
+    }else{
+        $sortpriority = 0;
+    }
+}
+if(isset($_GET['sortRegistrationTime'])){
+    if($_GET['sortRegistrationTime'] == 0){
+        $sortRegistrationTime = 1;
+    }else{
+        $sortRegistrationTime = 0;
+    }
+}
+$todos = $todoTable->get_todoAll($sorttname,$sortstatus,$sortpriority,$sortRegistrationTime);
 ?>
 <!DOCTYPE html>
 <html>
@@ -56,10 +85,8 @@ $todos = $todoTable->get_todoAll($sort);
     </header>
     <div id="contents">
         <main>
-            <a href="index.php">昇順</a>
-            <a href="index.php?sort=1">降順</a>
             <table>
-                <tr><th>Todoの内容</th><th>進捗</th><th>優先順位</th><th>登録時間</th><th>削除</th></tr>
+                <tr><th>Todoの内容</th><th>進捗</th><th>優先順位</th><th><a href="index.php?sorttname=<?php echo $sorttname; ?>&&sortstatus=<?php echo $sortstatus; ?>&&sortpriority=<?php echo $sortpriority; ?>&&sortRegistrationTime=<?php echo $sortRegistrationTime; ?>">登録時間</a></th><th>削除</th></tr>
                 <?php
                 foreach($todos as $todo){
                     ?>
