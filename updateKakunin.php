@@ -1,6 +1,7 @@
 <?php
 require_once ('function.php');
 require_once ('todo_class.php');
+require_once ('todotable_class.php');
 
 if(!isset($_POST['tid'],$_POST['tname'],$_POST['status'],$_POST['priority'])) {
     header("Location: http://mmr.e5.valueserver.jp/todo2/index.php?error=1");

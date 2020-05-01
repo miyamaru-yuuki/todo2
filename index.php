@@ -7,6 +7,8 @@ if(isset($_GET['error']) && $_GET['error'] == 1){
     echo 'ページを表示できません。トップページから入りなおしてください。';
 }elseif(isset($_GET['error']) && $_GET['error'] == 2){
     echo '未入力の項目があります。';
+}elseif(isset($_GET['error']) && $_GET['error'] == 3){
+    echo '指定したデータは存在しません。';
 }
 
 $env = getStatusPriority();
