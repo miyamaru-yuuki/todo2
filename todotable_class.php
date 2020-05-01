@@ -47,12 +47,8 @@ class TodoTable
             $sortRegistrationTime = "ASC";
         }
 
-        $sql = $this->db->prepare("SELECT * FROM todo2 ORDER BY sorttname ?, sortstatus ?, sortpriority ?, registrationTime ?");
+        $sql = $this->db->prepare("SELECT * FROM todo2 ORDER BY sorttname" .$sorttname. ", sortstatus" .$sortstatus. ", sortpriority" .$sortpriority. ", registrationTime" .$sortRegistrationTime);
 
-        $sql->bindValue( 1 , $sorttname);
-        $sql->bindValue( 2 , $sortstatus);
-        $sql->bindValue( 3 , $sortpriority);
-        $sql->bindValue( 4 , $sortRegistrationTime);
         $sql->execute();
         $all = $sql->fetchAll();
         $ret = array();
