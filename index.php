@@ -13,6 +13,7 @@ if(isset($_GET['error']) && $_GET['error'] == 1){
 
 $env = getStatusPriority();
 $todoTable = new TodoTable(db());
+$sort = null;
     
 //追加処理
 if(isset($_POST['tid'],$_POST['tname'],$_POST['status'],$_POST['priority'])) {
@@ -32,7 +33,11 @@ if(isset($_POST['tid'],$_POST['tname'],$_POST['status'],$_POST['priority'])) {
     $todoTable->delete($tid);
 }
 
-$todos = $todoTable->get_todoAll();
+//ソート
+if(isset($_GET['sort'])){
+    $sort = $_GET['sort'];
+}
+$todos = $todoTable->get_todoAll($sort);
 ?>
 <!DOCTYPE html>
 <html>
@@ -51,6 +56,8 @@ $todos = $todoTable->get_todoAll();
     </header>
     <div id="contents">
         <main>
+            <a href="index.php">昇順</a>
+            <a href="index.php?sort=1">降順</a>
             <table>
                 <tr><th>Todoの内容</th><th>進捗</th><th>優先順位</th><th>登録時間</th><th>削除</th></tr>
                 <?php

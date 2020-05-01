@@ -21,9 +21,13 @@ class TodoTable
         return $todo;
     }
 
-    public function get_todoAll()
+    public function get_todoAll($sort)
     {
-        $sql = $this->db->prepare("SELECT * FROM todo2");
+        if(!$sort){
+            $sql = $this->db->prepare("SELECT * FROM todo2 ORDER BY registrationTime ASC");
+        }else{
+            $sql = $this->db->prepare("SELECT * FROM todo2 ORDER BY registrationTime DESC");
+        }
         $sql->execute();
         $all = $sql->fetchAll();
         $ret = array();
