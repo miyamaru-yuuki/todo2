@@ -36,33 +36,33 @@ if(isset($_POST['tid'],$_POST['tname'],$_POST['status'],$_POST['priority'])) {
 $item = "registrationtime";
 $sort = 0; //ASC
 
-if(isset($_GET['sorttname'])){
+if(isset($_GET['tname'])){
     $item = "tname";
-    if($_GET['sorttname'] == 1){
+    if($_GET['tname'] == 1){
         $sort = 0;
     }else{
         $sort = 1;
     }
 }
-if(isset($_GET['sortstatus'])){
+if(isset($_GET['status'])){
     $item = "status";
-    if($_GET['sortstatus'] == 1){
+    if($_GET['status'] == 1){
         $sort = 0;
     }else{
         $sort = 1;
     }
 }
-if(isset($_GET['sortpriority'])){
+if(isset($_GET['priority'])){
     $item = "priority";
-    if($_GET['sortpriority'] == 1){
+    if($_GET['priority'] == 1){
         $sort = 0;
     }else{
         $sort = 1;
     }
 }
-if(isset($_GET['sortregistrationtime'])){
+if(isset($_GET['registrationtime'])){
     $item = "registrationtime";
-    if($_GET['sortregistrationtime'] == 1){
+    if($_GET['registrationtime'] == 1){
         $sort = 0;
     }else{
         $sort = 1;
@@ -89,7 +89,7 @@ $todos = $todoTable->get_todoAll($item,$sort);
     <div id="contents">
         <main>
             <table>
-                <tr><th><a href="index.php?sorttname=<?php echo $sort; ?>">Todoの内容</a></th><th><a href="index.php?sortstatus=<?php echo $sort; ?>">進捗</a></th><th><a href="index.php?sortpriority=<?php echo $sort; ?>">優先順位</a></th><th><a href="index.php?sortregistrationtime=<?php echo $sort; ?>">登録時間</a></th><th>削除</th></tr>
+                <tr><th><a href="index.php?tname=<?php echo $sort; ?>">Todoの内容</a></th><th><a href="index.php?status=<?php echo $sort; ?>">進捗</a></th><th><a href="index.php?priority=<?php echo $sort; ?>">優先順位</a></th><th><a href="index.php?registrationtime=<?php echo $sort; ?>">登録時間</a></th><th>削除</th></tr>
                 <?php
                 foreach($todos as $todo){
                     ?>
