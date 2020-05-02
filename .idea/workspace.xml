@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="86e8c58b-0843-42a1-a586-1dc47eb586c8" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/todotable_class.php" beforeDir="false" afterPath="$PROJECT_DIR$/todotable_class.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -15,8 +16,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="324">
-              <caret line="68" column="93" selection-start-line="68" selection-start-column="93" selection-end-line="68" selection-end-column="93" />
+            <state relative-caret-position="189">
+              <caret line="38" column="26" lean-forward="true" selection-start-line="38" selection-start-column="26" selection-end-line="38" selection-end-column="26" />
             </state>
           </provider>
         </entry>
@@ -78,8 +79,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/todotable_class.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="364">
-              <caret line="29" column="9" lean-forward="true" selection-start-line="29" selection-start-column="9" selection-end-line="29" selection-end-column="9" />
+            <state relative-caret-position="622">
+              <caret line="49" column="9" lean-forward="true" selection-start-line="49" selection-start-column="9" selection-end-line="49" selection-end-column="9" />
             </state>
           </provider>
         </entry>
@@ -217,12 +218,12 @@
       <workItem from="1588292010284" duration="164000" />
       <workItem from="1588292218316" duration="1910000" />
       <workItem from="1588298669725" duration="5234000" />
-      <workItem from="1588305066810" duration="2440000" />
+      <workItem from="1588305066810" duration="5565000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="51238000" />
+    <option name="totallyTimeSpent" value="54363000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="834" extended-state="0" />
@@ -308,15 +309,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/todotable_class.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="364">
-          <caret line="29" column="9" lean-forward="true" selection-start-line="29" selection-start-column="9" selection-end-line="29" selection-end-column="9" />
+        <state relative-caret-position="622">
+          <caret line="49" column="9" lean-forward="true" selection-start-line="49" selection-start-column="9" selection-end-line="49" selection-end-column="9" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
-          <caret line="68" column="93" selection-start-line="68" selection-start-column="93" selection-end-line="68" selection-end-column="93" />
+        <state relative-caret-position="189">
+          <caret line="38" column="26" lean-forward="true" selection-start-line="38" selection-start-column="26" selection-end-line="38" selection-end-column="26" />
         </state>
       </provider>
     </entry>

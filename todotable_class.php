@@ -23,31 +23,39 @@ class TodoTable
 
     public function get_todoAll($sorttname,$sortstatus,$sortpriority,$sortRegistrationTime)
     {
-        if($sorttname == 1){
-            $sorttname = "DESC";
-        }elseif($sorttname == 0){
-            $sorttname = "ASC";
+        $sql = "";
+
+        if($sorttname){
+            if($sorttname == 1){
+                $sql = $this->db->prepare("SELECT * FROM todo2 ORDER BY tnmae DESC");
+            }elseif($sorttname == 10){
+                $sql = $this->db->prepare("SELECT * FROM todo2 ORDER BY tnmae ASC");
+            }
         }
 
-        if($sortstatus == 1){
-            $sortstatus = "DESC";
-        }elseif($sortstatus == 0){
-            $sortstatus = "ASC";
+        if($sortstatus){
+            if($sortstatus == 3){
+                $sql = $this->db->prepare("SELECT * FROM todo2 ORDER BY status DESC");
+            }elseif($sortstatus == 2){
+                $sql = $this->db->prepare("SELECT * FROM todo2 ORDER BY status ASC");
+            }
         }
 
-        if($sortpriority == 1){
-            $sortpriority = "DESC";
-        }elseif($sortpriority == 0){
-            $sortpriority = "ASC";
+        if($sortpriority){
+            if($sortpriority == 5){
+                $sql = $this->db->prepare("SELECT * FROM todo2 ORDER BY priotiry DESC");
+            }elseif($sortpriority == 4){
+                $sql = $this->db->prepare("SELECT * FROM todo2 ORDER BY priotiry ASC");
+            }
         }
 
-        if($sortRegistrationTime == 1){
-            $sortRegistrationTime = "DESC";
-        }elseif($sortRegistrationTime == 0){
-            $sortRegistrationTime = "ASC";
+        if($sortRegistrationTime){
+            if($sortRegistrationTime == 7){
+                $sql = $this->db->prepare("SELECT * FROM todo2 ORDER BY registrationTime DESC");
+            }elseif($sortRegistrationTime == 6){
+                $sql = $this->db->prepare("SELECT * FROM todo2 ORDER BY registrationTime ASC");
+            }
         }
-
-        $sql = $this->db->prepare("SELECT * FROM todo2 ORDER BY sorttname" .$sorttname. ", sortstatus" .$sortstatus. ", sortpriority" .$sortpriority. ", registrationTime" .$sortRegistrationTime);
 
         $sql->execute();
         $all = $sql->fetchAll();

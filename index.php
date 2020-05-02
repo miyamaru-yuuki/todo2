@@ -33,39 +33,44 @@ if(isset($_POST['tid'],$_POST['tname'],$_POST['status'],$_POST['priority'])) {
 }
 
 //ソート
-$sorttname = 0;
-$sortstatus = 0;
-$sortpriority = 0;
-$sortRegistrationTime = 0;
+$sorttname = 10;
+$sortstatus = 2;
+$sortpriority = 4;
+$sortRegistrationTime = 7;
 
 if(isset($_GET['sorttname'])){
-    if($_GET['sorttname'] == 0){
+    if($_GET['sorttname'] == 10){
         $sorttname = 1;
     }else{
-        $sorttname = 0;
+        $sorttname = 10;
     }
+}else{
+    $sorttname = null;
 }
 if(isset($_GET['sortstatus'])){
-    if($_GET['sortstatus'] == 0){
-        $sortstatus = 1;
+    if($_GET['sortstatus'] == 2){
+        $sortstatus = 3;
     }else{
-        $sortstatus = 0;
+        $sortstatus = 2;
     }
+}else{
+    $sortstatus = null;
 }
 if(isset($_GET['sortpriority'])){
-    if($_GET['sortpriority'] == 0){
-        $sortpriority = 1;
+    if($_GET['sortpriority'] == 4){
+        $sortpriority = 5;
     }else{
-        $sortpriority = 0;
+        $sortpriority = 4;
     }
+}else{
+    $sortpriority = null;
 }
-if(isset($_GET['sortRegistrationTime'])){
-    if($_GET['sortRegistrationTime'] == 0){
-        $sortRegistrationTime = 1;
-    }else{
-        $sortRegistrationTime = 0;
-    }
+if(isset($_GET['sortRegistrationTime']) && $_GET['sortRegistrationTime'] == 6){
+        $sortRegistrationTime = 7;
+}elseif($sortRegistrationTime = 7){
+        $sortRegistrationTime = 6;
 }
+
 $todos = $todoTable->get_todoAll($sorttname,$sortstatus,$sortpriority,$sortRegistrationTime);
 ?>
 <!DOCTYPE html>
@@ -86,7 +91,7 @@ $todos = $todoTable->get_todoAll($sorttname,$sortstatus,$sortpriority,$sortRegis
     <div id="contents">
         <main>
             <table>
-                <tr><th>Todoの内容</th><th>進捗</th><th>優先順位</th><th><a href="index.php?sorttname=<?php echo $sorttname; ?>&&sortstatus=<?php echo $sortstatus; ?>&&sortpriority=<?php echo $sortpriority; ?>&&sortRegistrationTime=<?php echo $sortRegistrationTime; ?>">登録時間</a></th><th>削除</th></tr>
+                <tr><th><a href="index.php?sorttname=<?php echo $sorttname; ?>">Todoの内容</a></th><th><a href="index.php?sortstatus=<?php echo $sortstatus; ?>">進捗</a></th><th><a href="index.php?sortpriority=<?php echo $sortpriority; ?>">優先順位</a></th><th><a href="index.php?sortRegistrationTime=<?php echo $sortRegistrationTime; ?>">登録時間</a></th><th>削除</th></tr>
                 <?php
                 foreach($todos as $todo){
                     ?>
