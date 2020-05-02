@@ -21,38 +21,38 @@ class TodoTable
         return $todo;
     }
 
-    public function get_todoAll($sorttname,$sortstatus,$sortpriority,$sortRegistrationTime)
+    public function get_todoAll($item,$sort)
     {
         $sql = "";
 
-        if($sorttname){
-            if($sorttname == 1){
-                $sql = $this->db->prepare("SELECT * FROM todo2 ORDER BY tnmae DESC");
-            }elseif($sorttname == 10){
-                $sql = $this->db->prepare("SELECT * FROM todo2 ORDER BY tnmae ASC");
+        if($item == "tname"){
+            if($sort == 1){
+                $sql = $this->db->prepare("SELECT * FROM todo2 ORDER BY tname DESC");
+            }elseif($sort == 0){
+                $sql = $this->db->prepare("SELECT * FROM todo2 ORDER BY tname ASC");
             }
         }
 
-        if($sortstatus){
-            if($sortstatus == 3){
+        if($item == "status"){
+            if($sort == 1){
                 $sql = $this->db->prepare("SELECT * FROM todo2 ORDER BY status DESC");
-            }elseif($sortstatus == 2){
+            }elseif($sort == 0){
                 $sql = $this->db->prepare("SELECT * FROM todo2 ORDER BY status ASC");
             }
         }
 
-        if($sortpriority){
-            if($sortpriority == 5){
-                $sql = $this->db->prepare("SELECT * FROM todo2 ORDER BY priotiry DESC");
-            }elseif($sortpriority == 4){
-                $sql = $this->db->prepare("SELECT * FROM todo2 ORDER BY priotiry ASC");
+        if($item == "priority"){
+            if($sort == 1){
+                $sql = $this->db->prepare("SELECT * FROM todo2 ORDER BY priority DESC");
+            }elseif($sort == 0){
+                $sql = $this->db->prepare("SELECT * FROM todo2 ORDER BY priority ASC");
             }
         }
 
-        if($sortRegistrationTime){
-            if($sortRegistrationTime == 7){
+        if($item == "registrationtime"){
+            if($sort == 1){
                 $sql = $this->db->prepare("SELECT * FROM todo2 ORDER BY registrationTime DESC");
-            }elseif($sortRegistrationTime == 6){
+            }elseif($sort == 0){
                 $sql = $this->db->prepare("SELECT * FROM todo2 ORDER BY registrationTime ASC");
             }
         }
