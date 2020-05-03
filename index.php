@@ -38,9 +38,7 @@ $sort = 0; //ASC
 
 if(isset($_GET['item'],$_GET['sort'])){
     $item = $_GET['item'];
-    if($_GET['sort'] == 1){
-        $sort = 0;
-    }else{
+    if($_GET['sort'] == 0){
         $sort = 1;
     }
 }
