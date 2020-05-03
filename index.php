@@ -33,17 +33,17 @@ if(isset($_POST['tid'],$_POST['tname'],$_POST['status'],$_POST['priority'])) {
 }
 
 //ソート
-$sortName = "registrationtime";
+$sortColumn = "registrationtime";
 $sort = 0; //ASC
 
-if(isset($_GET['sortName'],$_GET['sort'])){
-    $sortName = $_GET['sortName'];
+if(isset($_GET['sortColumn'],$_GET['sort'])){
+    $sortColumn = $_GET['sortColumn'];
     if($_GET['sort'] == 0){
         $sort = 1;
     }
 }
 
-$todos = $todoTable->get_todoAll($sortName,$sort);
+$allData = $todoTable->get_todoAll($sortColumn,$sort);
 ?>
 <!DOCTYPE html>
 <html>
@@ -63,9 +63,9 @@ $todos = $todoTable->get_todoAll($sortName,$sort);
     <div id="contents">
         <main>
             <table>
-                <tr><th><a href="index.php?sortName=tname&sort=<?php echo $sort; ?>">Todoの内容</a></th><th><a href="index.php?sortName=status&sort=<?php echo $sort; ?>">進捗</a></th><th><a href="index.php?sortName=priority&sort=<?php echo $sort; ?>">優先順位</a></th><th><a href="index.php?sortName=registrationtime&sort=<?php echo $sort; ?>">登録時間</a></th><th>削除</th></tr>
+                <tr><th><a href="index.php?sortColumn=tname&sort=<?php echo $sort; ?>">Todoの内容</a></th><th><a href="index.php?sortColumn=status&sort=<?php echo $sort; ?>">進捗</a></th><th><a href="index.php?sortColumn=priority&sort=<?php echo $sort; ?>">優先順位</a></th><th><a href="index.php?sortColumn=registrationtime&sort=<?php echo $sort; ?>">登録時間</a></th><th>削除</th></tr>
                 <?php
-                foreach($todos as $todo){
+                foreach($allData as $todo){
                     ?>
                     <tr><td><a href="update.php?tid=<?php echo $todo->getTid(); ?>"><?php echo h($todo->getTname()); ?></a></td><td><?php echo h($todo->getStatusDisplay()); ?></td><td><?php echo h($todo->getPriorityDisplay()); ?></td><td><?php echo $todo->getRegistrationTime(); ?></td><td><a href="deleteKakunin.php?tid=<?php echo $todo->getTid(); ?>">削除</a></td></tr>
                 <?php

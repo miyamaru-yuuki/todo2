@@ -9,9 +9,9 @@ if(!isset($_GET['tid'])){
 
 $tid = $_GET['tid'];
 $todoTable = new TodoTable(db());
-$todoSingle = $todoTable->get_todo($tid);
+$singleData = $todoTable->get_todo($tid);
 
-if(is_null($todoSingle->getTid())){
+if(is_null($singleData->getTid())){
     header("Location: http://mmr.e5.valueserver.jp/todo2/index.php?error=3");
     exit();
 }
@@ -34,10 +34,10 @@ if(is_null($todoSingle->getTid())){
     <div id="contents">
         <main>
             <form method="POST" action="index.php">
-                <p>Todoの内容:<?php echo $todoSingle->getTname(); ?></p>
-                <p>進捗:<?php echo $todoSingle->getStatusDisplay(); ?></p>
-                <p>優先順位:<?php echo$todoSingle->getPriorityDisplay(); ?></p>
-                <p>登録時間:<?php echo $todoSingle->getRegistrationTime(); ?></p>
+                <p>Todoの内容:<?php echo $singleData->getTname(); ?></p>
+                <p>進捗:<?php echo $singleData->getStatusDisplay(); ?></p>
+                <p>優先順位:<?php echo $singleData->getPriorityDisplay(); ?></p>
+                <p>登録時間:<?php echo $singleData->getRegistrationTime(); ?></p>
                 <input type="hidden" name="tid" value="<?php echo $tid; ?>">
                 <p>このデータを削除してよろしいですか？</p>
                 <p><input type="submit" value="OK"></p>

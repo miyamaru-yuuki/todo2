@@ -15,9 +15,9 @@ if(isset($_GET['error']) && $_GET['error'] == 2){
 $tid = $_GET['tid'];
 $env = getStatusPriority();
 $todoTable = new TodoTable(db());
-$todoSingle = $todoTable->get_todo($tid);
+$singleData = $todoTable->get_todo($tid);
 
-if(is_null($todoSingle->getTid())){
+if(is_null($singleData->getTid())){
     header("Location: http://mmr.e5.valueserver.jp/todo2/index.php?error=3");
     exit();
 }
@@ -40,18 +40,18 @@ if(is_null($todoSingle->getTid())){
     <div id="contents">
         <main>
             <form method="POST" action="updateKakunin.php">
-                <p>Todoの内容 <input type="text" name="tname" value="<?php echo $todoSingle->getTname(); ?>"></p>
+                <p>Todoの内容 <input type="text" name="tname" value="<?php echo $singleData->getTname(); ?>"></p>
                 <div>進捗
                     <select name="status">
                         <?php
-                            getSelectBox($env['status'],$todoSingle->getStatus());
+                            getSelectBox($env['status'],$singleData->getStatus());
                         ?>
                     </select>
                 </div>
                 <div>優先順位
                     <select name="priority">
                         <?php
-                            getSelectBox($env['priority'],$todoSingle->getPriority());
+                            getSelectBox($env['priority'],$singleData->getPriority());
                         ?>
                     </select>
                 </div>
