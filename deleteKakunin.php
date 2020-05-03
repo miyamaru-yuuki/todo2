@@ -8,8 +8,8 @@ if(!isset($_GET['tid'])){
 }
 
 $tid = $_GET['tid'];
-$todo = new TodoTable(db());
-$todoSingle = $todo->get_todo($tid);
+$todoTable = new TodoTable(db());
+$todoSingle = $todoTable->get_todo($tid);
 
 if(is_null($todoSingle->getTid())){
     header("Location: http://mmr.e5.valueserver.jp/todo2/index.php?error=3");

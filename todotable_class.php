@@ -21,11 +21,11 @@ class TodoTable
         return $todo;
     }
 
-    public function get_todoAll($todocolumn,$sort)
+    public function get_todoAll($sortName,$sort)
     {
         $sql = "";
 
-        if($todocolumn == "tname"){
+        if($sortName == "tname"){
             if($sort == 1){
                 $sql = $this->db->prepare("SELECT * FROM todo2 ORDER BY tname DESC");
             }elseif($sort == 0){
@@ -33,7 +33,7 @@ class TodoTable
             }
         }
 
-        if($todocolumn == "status"){
+        if($sortName == "status"){
             if($sort == 1){
                 $sql = $this->db->prepare("SELECT * FROM todo2 ORDER BY status DESC");
             }elseif($sort == 0){
@@ -41,7 +41,7 @@ class TodoTable
             }
         }
 
-        if($todocolumn == "priority"){
+        if($sortName == "priority"){
             if($sort == 1){
                 $sql = $this->db->prepare("SELECT * FROM todo2 ORDER BY priority DESC");
             }elseif($sort == 0){
@@ -49,7 +49,7 @@ class TodoTable
             }
         }
 
-        if($todocolumn == "registrationtime"){
+        if($sortName == "registrationtime"){
             if($sort == 1){
                 $sql = $this->db->prepare("SELECT * FROM todo2 ORDER BY registrationTime DESC");
             }elseif($sort == 0){
