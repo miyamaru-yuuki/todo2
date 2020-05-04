@@ -21,38 +21,38 @@ class TodoTable
         return $todo;
     }
 
-    public function get_todoAll($sortColumn,$sort)
+    public function get_todoAll($sortColumn,$sortOrder)
     {
         $sql = "";
 
         if($sortColumn == "tname"){
-            if($sort == 1){
+            if($sortOrder == 1){
                 $sql = $this->db->prepare("SELECT * FROM todo2 ORDER BY tname DESC");
-            }elseif($sort == 0){
+            }elseif($sortOrder == 0){
                 $sql = $this->db->prepare("SELECT * FROM todo2 ORDER BY tname ASC");
             }
         }
 
         if($sortColumn == "status"){
-            if($sort == 1){
+            if($sortOrder == 1){
                 $sql = $this->db->prepare("SELECT * FROM todo2 ORDER BY status DESC");
-            }elseif($sort == 0){
+            }elseif($sortOrder == 0){
                 $sql = $this->db->prepare("SELECT * FROM todo2 ORDER BY status ASC");
             }
         }
 
         if($sortColumn == "priority"){
-            if($sort == 1){
+            if($sortOrder == 1){
                 $sql = $this->db->prepare("SELECT * FROM todo2 ORDER BY priority DESC");
-            }elseif($sort == 0){
+            }elseif($sortOrder == 0){
                 $sql = $this->db->prepare("SELECT * FROM todo2 ORDER BY priority ASC");
             }
         }
 
         if($sortColumn == "registrationtime"){
-            if($sort == 1){
+            if($sortOrder == 1){
                 $sql = $this->db->prepare("SELECT * FROM todo2 ORDER BY registrationTime DESC");
-            }elseif($sort == 0){
+            }elseif($sortOrder == 0){
                 $sql = $this->db->prepare("SELECT * FROM todo2 ORDER BY registrationTime ASC");
             }
         }
