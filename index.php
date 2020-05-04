@@ -30,6 +30,11 @@ if(isset($_POST['tid'],$_POST['tname'],$_POST['status'],$_POST['priority'])) {
     //削除処理
     $tid = $_POST['tid'];
     $todoTable->delete($tid);
+}elseif(isset($_POST['tname'])){
+    //検索
+    $tname = $_POST['tname'];
+    $todos = $todoTable->search($tname);
+    var_dump($todos);
 }
 
 //ソート
@@ -43,7 +48,9 @@ if(isset($_GET['sortColumn'],$_GET['sortOrder'])){
     }
 }
 
-$todos = $todoTable->get_todoAll($sortColumn,$sortOrder);
+if(!isset($todos)){
+    $todos = $todoTable->get_todoAll($sortColumn,$sortOrder);
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -83,6 +90,11 @@ $todos = $todoTable->get_todoAll($sortColumn,$sortOrder);
                     </select>
                 </p>
                 <p><input type="submit" value="追加"></p>
+            </form>
+            <p>Todoの内容検索</p>
+            <form method="POST" action="index.php">
+                <p>Todoの内容 <input type="text" name="tname"></p>
+                <p><input type="submit" value="検索"></p>
             </form>
         </main>
     </div>

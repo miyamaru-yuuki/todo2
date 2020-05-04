@@ -67,4 +67,20 @@ class TodoTable
         $sql->bindValue(1, $tid);
         $sql->execute();
     }
+
+    public function search($tname)
+    {
+        $sql = $this->db->prepare("SELECT * FROM todo2 WHERE tname LIKE ?");
+        $sql->bindValue(1, '%'. $tname .'%');
+        $all = $sql->fetchAll();
+
+        $ret = array();
+
+        foreach($all as $data){
+            $todo = new Todo($data['tid'],$data['tname'],$data['status'],$data['priority'],$data['registrationTime']);
+            $ret[] = $todo;
+        }
+
+        return $ret;
+    }
 }
