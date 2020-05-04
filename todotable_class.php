@@ -23,24 +23,19 @@ class TodoTable
 
     public function get_todoAll($sortColumn,$sortOrder)
     {
-        $tnameSql = ["SELECT * FROM todo2 ORDER BY tname ASC","SELECT * FROM todo2 ORDER BY tname DESC"];
-        $statusSql = ["SELECT * FROM todo2 ORDER BY status ASC","SELECT * FROM todo2 ORDER BY status DESC"];
-        $prioritySql = ["SELECT * FROM todo2 ORDER BY priority ASC","SELECT * FROM todo2 ORDER BY priority DESC"];
-        $registrationTimeSql = ["SELECT * FROM todo2 ORDER BY registrationTime ASC","SELECT * FROM todo2 ORDER BY registrationTime DESC"];
+        $sqlArray = [
+            "tname" => ["SELECT * FROM todo2 ORDER BY tname ASC","SELECT * FROM todo2 ORDER BY tname DESC"],
+            "status" => ["SELECT * FROM todo2 ORDER BY status ASC","SELECT * FROM todo2 ORDER BY status DESC"],
+            "priority" => ["SELECT * FROM todo2 ORDER BY priority ASC","SELECT * FROM todo2 ORDER BY priority DESC"],
+            "registrationtime" => ["SELECT * FROM todo2 ORDER BY registrationTime ASC","SELECT * FROM todo2 ORDER BY registrationTime DESC"]
+            ];
 
         $sql = "";
 
-        if($sortColumn == "tname"){
-            $sql = $this->db->prepare($tnameSql[$sortOrder]);
-        }
-        if($sortColumn == "status"){
-            $sql = $this->db->prepare($statusSql[$sortOrder]);
-        }
-        if($sortColumn == "priority"){
-            $sql = $this->db->prepare($prioritySql[$sortOrder]);
-        }
-        if($sortColumn == "registrationtime"){
-            $sql = $this->db->prepare($registrationTimeSql[$sortOrder]);
+        foreach ($sqlArray as $key => $value){
+            if($sortColumn == $key){
+                $sql = $this->db->prepare($value[$sortOrder]);
+            }
         }
 
         $sql->execute();
