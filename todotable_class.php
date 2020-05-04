@@ -23,38 +23,24 @@ class TodoTable
 
     public function get_todoAll($sortColumn,$sortOrder)
     {
+        $tnameSql = ["SELECT * FROM todo2 ORDER BY tname ASC","SELECT * FROM todo2 ORDER BY tname DESC"];
+        $statusSql = ["SELECT * FROM todo2 ORDER BY status ASC","SELECT * FROM todo2 ORDER BY status DESC"];
+        $prioritySql = ["SELECT * FROM todo2 ORDER BY priority ASC","SELECT * FROM todo2 ORDER BY priority DESC"];
+        $registrationTimeSql = ["SELECT * FROM todo2 ORDER BY registrationTime ASC","SELECT * FROM todo2 ORDER BY registrationTime DESC"];
+
         $sql = "";
 
         if($sortColumn == "tname"){
-            if($sortOrder == 1){
-                $sql = $this->db->prepare("SELECT * FROM todo2 ORDER BY tname DESC");
-            }elseif($sortOrder == 0){
-                $sql = $this->db->prepare("SELECT * FROM todo2 ORDER BY tname ASC");
-            }
+            $sql = $this->db->prepare($tnameSql[$sortOrder]);
         }
-
         if($sortColumn == "status"){
-            if($sortOrder == 1){
-                $sql = $this->db->prepare("SELECT * FROM todo2 ORDER BY status DESC");
-            }elseif($sortOrder == 0){
-                $sql = $this->db->prepare("SELECT * FROM todo2 ORDER BY status ASC");
-            }
+            $sql = $this->db->prepare($statusSql[$sortOrder]);
         }
-
         if($sortColumn == "priority"){
-            if($sortOrder == 1){
-                $sql = $this->db->prepare("SELECT * FROM todo2 ORDER BY priority DESC");
-            }elseif($sortOrder == 0){
-                $sql = $this->db->prepare("SELECT * FROM todo2 ORDER BY priority ASC");
-            }
+            $sql = $this->db->prepare($prioritySql[$sortOrder]);
         }
-
         if($sortColumn == "registrationtime"){
-            if($sortOrder == 1){
-                $sql = $this->db->prepare("SELECT * FROM todo2 ORDER BY registrationTime DESC");
-            }elseif($sortOrder == 0){
-                $sql = $this->db->prepare("SELECT * FROM todo2 ORDER BY registrationTime ASC");
-            }
+            $sql = $this->db->prepare($registrationTimeSql[$sortOrder]);
         }
 
         $sql->execute();
