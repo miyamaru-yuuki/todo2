@@ -30,14 +30,7 @@ class TodoTable
             "registrationtime" => ["SELECT * FROM todo2 ORDER BY registrationTime ASC","SELECT * FROM todo2 ORDER BY registrationTime DESC"]
             ];
 
-        $sql = "";
-
-        foreach ($sqlArray as $key => $value){
-            if($sortColumn == $key){
-                $sql = $this->db->prepare($value[$sortOrder]);
-            }
-        }
-
+        $sql = $this->db->prepare($sqlArray[$sortColumn][$sortOrder]);
         $sql->execute();
         $all = $sql->fetchAll();
         $ret = array();
