@@ -72,6 +72,7 @@ class TodoTable
     {
         $sql = $this->db->prepare("SELECT * FROM todo2 WHERE tname LIKE ?");
         $sql->bindValue(1, '%'. $tname .'%');
+        $sql->execute();
         $all = $sql->fetchAll();
 
         $ret = array();

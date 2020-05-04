@@ -34,7 +34,6 @@ if(isset($_POST['tid'],$_POST['tname'],$_POST['status'],$_POST['priority'])) {
     //検索
     $tname = $_POST['tname'];
     $todos = $todoTable->search($tname);
-    var_dump($todos);
 }
 
 //ソート
