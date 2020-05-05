@@ -11,13 +11,15 @@ if(isset($_GET['error']) && $_GET['error'] == 1){
     echo '指定したデータは存在しません。';
 }
 
-//検索結果表示時
-if(isset($_GET['search'])) {
-    echo '検索結果を表示しています。';
-}
-
 $env = getStatusPriority();
 $todoTable = new TodoTable(db());
+
+//検索結果表示時
+if(isset($_GET['search'],$_GET['tname'])) {
+    $tname = $_GET['tname'];
+    $todos = $todoTable->search($tname);
+    echo $tname. 'の検索結果を表示しています。';
+}
     
 //追加処理
 if(isset($_POST['tid'],$_POST['tname'],$_POST['status'],$_POST['priority'])) {
@@ -35,10 +37,6 @@ if(isset($_POST['tid'],$_POST['tname'],$_POST['status'],$_POST['priority'])) {
     //削除処理
     $tid = $_POST['tid'];
     $todoTable->delete($tid);
-}elseif(isset($_GET['tname'])){
-    //検索
-    $tname = $_GET['tname'];
-    $todos = $todoTable->search($tname);
 }
 
 //ソート
