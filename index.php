@@ -13,6 +13,7 @@ if(isset($_GET['error']) && $_GET['error'] == 1){
 
 $env = getStatusPriority();
 $todoTable = new TodoTable(db());
+$todos = null;
 
 //検索結果表示時
 if(isset($_GET['search'],$_GET['tname'])) {
