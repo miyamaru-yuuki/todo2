@@ -34,7 +34,7 @@ if(isset($_POST['tid'],$_POST['tname'],$_POST['status'],$_POST['priority'])) {
     //検索結果表示時
     $tname = $_GET['tname'];
     $todos = $todoTable->search($tname);
-    echo $tname. 'の検索結果を表示しています。';
+    echo h($tname). 'の検索結果を表示しています。';
 }
 
 //ソート
